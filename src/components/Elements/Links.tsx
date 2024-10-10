@@ -23,8 +23,6 @@ const StyledLink = styled(Link)<LinksProps>`
 `;
 
 const Links = ({style, to, children, className}:LinksProps):JSX.Element => {
-    const location = useLocation();
-    const active = location.pathname === to;
 
     return (
         <StyledLink style={style} to={to} className={className}>{children}</StyledLink>
