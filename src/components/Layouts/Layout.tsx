@@ -9,7 +9,12 @@ interface LayoutProps {
 const StyledLayout = styled.div`
     box-sizing: border-box;
     display:flex;
-    width:100%;
+    width: 100%;
+    max-width: 1194px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-left: 2rem;
+    padding-right: 2rem;
 `;
 
 const Layout = ({children, changedStyle}:LayoutProps):JSX.Element => {

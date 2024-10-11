@@ -2,8 +2,6 @@ import React from 'react';
 import Layout from '../../components/layouts/Layout';
 import Header from '../../components/layouts/Header';
 import Footer from '../../components/layouts/Footer';
-import CanvasEditor from '../../components/functionals/canvasEditor/CanvasEditor';
-import ToolBar from '../../components/functionals/canvasEditor/ToolBar';
 
 const CreateQuiz: React.FC = () => {
     return (
@@ -14,11 +12,14 @@ const CreateQuiz: React.FC = () => {
                     marginTop:'2rem',
                     width:'100%',
                     display:'flex',
-                    alignItems:'center',
+                    alignItems:'flex-start',
+                    justifyContent:'center',
                     flexDirection:'column'
                 }}>
-                    <ToolBar/>
-                    <CanvasEditor/>
+                    <h1 style={{}}>
+                        문제 작성
+                    </h1>
+                    
                 </main>
             </Layout>
             <Footer/>

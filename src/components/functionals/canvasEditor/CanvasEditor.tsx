@@ -88,12 +88,13 @@ const CanvasEditor = ({}:CanvasEditorProps):JSX.Element => {
             width={1000}
             height={window.innerHeight - 160}
             style={{
-                border: '1px solid black',
                 touchAction: 'none',
                 userSelect: 'none',
                 WebkitUserSelect: 'none',
-                width: '1000px',
-                height: 'calc( 100vh - 10rem)'
+                width: '560px',
+                height: 'calc( 100vh - 15rem)',
+                borderRadius: '3rem',
+                boxShadow: '0.25rem 0.5rem 1.5rem rgba(0,0,0,0.2)'
             }}
         />
     );
