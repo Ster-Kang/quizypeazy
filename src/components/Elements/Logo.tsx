@@ -25,7 +25,7 @@ const Logo = ({src, children, alt, type, style}:LogoProps):JSX.Element => {
                         <StyledImg src={src} alt={alt} style={style}></StyledImg>
                     </Links>
                 )
-            : 
+                : 
                 (<Links to={src} style={style}>{children}</Links>)
             }
         </>

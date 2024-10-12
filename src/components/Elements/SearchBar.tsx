@@ -8,7 +8,7 @@ interface SearchBarProps {
 };
 
 const StyledDiv = styled.form`
-    width: 15rem;
+    width: 12rem;
     height: 2.4rem;
     box-sizing: border-box;
     border: 0.1rem solid rgba(0,0,0,0.6);
@@ -24,10 +24,6 @@ const StyledDiv = styled.form`
     &:hover {
         box-shadow: 0rem 0.2rem 0.25rem rgba(0,0,0,0.1);
     }
-
-    // &:hover img {
-    //     opacity: 0.6;
-    // }
 `;
 
 const StyledImg = styled.img`
@@ -45,8 +41,9 @@ const SearchBar = ({style}:SearchBarProps):JSX.Element => {
             onMouseEnter={()=>setHovered(true)}
             onMouseLeave={()=>setHovered(false)}
             >
-            <Inputs placeholder="검색어를 입력해주세요." 
+            <Inputs placeholder="검색어 입력" 
                 style={{
+                    width: '8rem',
                     marginRight:'auto',
                     "--hovered-placeholder-color": Hovered ? "rgba(0, 0, 0, 0.6)" : "rgba(0,0,0,0.3)"
                 }}></Inputs>
