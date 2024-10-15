@@ -5,13 +5,39 @@ import Inputs from "./Inputs";
 
 interface SearchBarProps {
     style?: React.CSSProperties;
+    
 };
 
-const StyledDiv = styled.form`
+const StyledImg = styled.img< { isFocused : boolean} >`
+    opacity: ${({isFocused})=>(isFocused?0.6:0.2)};
+    height: 50%;
+    transform: translateX(2px);
+    transition: opacity 0.3s ease;
+    margin-right:1rem;
+`;
+
+const StyledInput = styled(Inputs)`
+    width: 7rem;
+
+        &::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+        transition: color 0.3s ease;
+    }
+
+    &:focus::placeholder {
+        color: rgba(0, 0, 0, 1);
+    }
+
+    &:hover::placeholder {
+        color: rgba(0, 0, 0, 1);
+    
+`
+
+const StyledDiv = styled.form<{isFocused:boolean}>`
     width: 12rem;
     height: 2.4rem;
     box-sizing: border-box;
-    border: 0.1rem solid rgba(0,0,0,0.6);
+    border: ${({isFocused})=>(isFocused? '0.15rem solid rgba(0,0,0,0.6)' : '0.15rem solid rgba(0,0,0,0.2)')};
     border-radius: 1.5rem;
     display:flex;
     flex-direction: row;
@@ -19,35 +45,32 @@ const StyledDiv = styled.form`
     justify-content: flex-start;
     padding-left: 1rem;
     padding-right: 1rem;
-    transition: box-shadow 0.2s;
+    transition: box-shadow 0.2s, border 0.2s;
 
     &:hover {
+        border: 0.15rem solid rgba(0,0,0,0.6);
         box-shadow: 0rem 0.2rem 0.25rem rgba(0,0,0,0.1);
+
+        ${StyledImg} {
+            opacity: 0.6;
+        }
+
+        ${StyledInput}::placeholder {
+            color: rgba(0, 0, 0, 1);
+        }
     }
 `;
 
-const StyledImg = styled.img`
-    opacity: 0.6;
-    height: 50%;
-    transform: translateX(2px);
-    transition: opacity 0.3s ease;
-`;
-
 const SearchBar = ({style}:SearchBarProps):JSX.Element => {
-    const [Hovered, setHovered] = useState(false);
+
+    const [isFocused, setIsFocused] = useState(false);
 
     return(
-        <StyledDiv
-            onMouseEnter={()=>setHovered(true)}
-            onMouseLeave={()=>setHovered(false)}
-            >
-            <Inputs placeholder="검색어 입력" 
-                style={{
-                    width: '8rem',
-                    marginRight:'auto',
-                    "--hovered-placeholder-color": Hovered ? "rgba(0, 0, 0, 0.6)" : "rgba(0,0,0,0.3)"
-                }}></Inputs>
-            <StyledImg src={SearchIcon} alt="검색아이콘" ></StyledImg>
+        <StyledDiv isFocused={isFocused}>
+            <StyledImg isFocused={isFocused} src={SearchIcon} alt="검색아이콘" ></StyledImg>
+            <StyledInput placeholder="검색어 입력" 
+                onFocus={()=>setIsFocused(true)}
+                onBlur={()=>setIsFocused(false)}></StyledInput>
         </StyledDiv>
     )
 }
