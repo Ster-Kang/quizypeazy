@@ -11,49 +11,85 @@ const Layout = styled.form`
     height: calc( 100vh - 13.5rem );
 `
 
+const CategoryInput = styled(Inputs)`
+    border: 0.2rem solid rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+    width: 8rem;
+    padding: 0.66rem 1.2rem;
+    border-radius: 2rem;
+    margin-right: 1.5rem;
+    transition: border 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        border: 0.2rem solid rgba(0, 0, 0, 0.6);
+        box-shadow: 0rem 0.2rem 0.25rem rgba(0,0,0,0.1);
+    }
+
+    &:hover::placeholder {
+        color: rgba(0,0,0,1);
+    }
+
+    &:focus {
+        border: 0.2rem solid rgba(0, 0, 0, 0.6);
+        box-shadow: 0rem 0.2rem 0.25rem rgba(0,0,0,0.1);
+    }
+
+    &:focus::placeholder {
+        color:rgba(0,0,0,1)
+    }
+`
+
+const SubjectInput = styled(Inputs)`
+    border: 0.2rem solid rgba(0, 0, 0, 0.2);
+    border-radius: 1.5rem;
+    width: 12rem;
+    padding: 0.66rem 1.2rem;
+    border-radius: 2rem;
+    margin-right: 1rem;
+    transition: border 0.2s, box-shadow 0.2s;
+
+    &:hover {
+        border: 0.2rem solid rgba(0, 0, 0, 0.6);
+        box-shadow: 0rem 0.2rem 0.25rem rgba(0,0,0,0.1);
+    }
+
+    &:hover::placeholder {
+        color: rgba(0,0,0,1);
+    }
+
+    &:focus {
+        border: 0.2rem solid rgba(0, 0, 0, 0.6);
+        box-shadow: 0rem 0.2rem 0.25rem rgba(0,0,0,0.1);
+    }
+
+    &:focus::placeholder {
+        color:rgba(0,0,0,1)
+    }
+`
+
+const QuizMetaDataInputs = styled.section`
+
+`
+
+const QuizMainData = styled.div`
+
+`
+
 const QuizEditor = ({}:QuizEditorProps):JSX.Element => {
-    const [hoveredCategory, setHoveredCategory] = useState(false);
-    const [hoveredTitle, setHoveredTitle] = useState(false);
 
     return(
         <Layout>
-            <h2>
-
-            </h2>
-            <Inputs
-                onMouseEnter={() => setHoveredCategory(true)}
-                onMouseLeave={() => setHoveredCategory(false)}
-                placeholder="문제 카테고리 입력"
-                style={{
-                    width: '7.5rem',
-                    border: hoveredCategory 
-                    ? '0.2rem solid rgba(0,0,0,0.6)' : '0.2rem solid rgba(0,0,0,0.2)',
-                    padding: '0.66rem 1.2rem',
-                    borderRadius: '2rem', 
-                    "--hovered-placeholder-color": hoveredCategory
-                    ? "rgba(0,0,0,0.6)"
-                    : "rgba(0,0,0,0.2)",
-                    marginRight: '1rem'
-                }}
-                isolated={true}
-            ></Inputs>          
-            <Inputs
-                onMouseEnter={() => setHoveredTitle(true)}
-                onMouseLeave={() => setHoveredTitle(false)}
-                placeholder="문제 제목 입력"
-                style={{
-                    width: '20rem',
-                    border: hoveredTitle 
-                    ? '0.2rem solid rgba(0,0,0,0.6)' : '0.2rem solid rgba(0,0,0,0.2)',
-                    padding: '0.66rem 1.2rem',
-                    borderRadius: '2rem', 
-                    "--hovered-placeholder-color": hoveredTitle
-                    ? "rgba(0,0,0,0.6)"
-                    : "rgba(0,0,0,0.2)",
-                }}
-                isolated={true}
-            ></Inputs>
-
+            <QuizMetaDataInputs>
+                <CategoryInput
+                    placeholder="문제 카테고리 입력"
+                ></CategoryInput>          
+                <SubjectInput
+                    placeholder="문제 제목 입력"
+                ></SubjectInput>
+            </QuizMetaDataInputs>
+            <QuizMainData>
+                
+            </QuizMainData>
         </Layout>
     )
 };
