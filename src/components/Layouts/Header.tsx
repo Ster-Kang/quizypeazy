@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Links from '../elements/Links';
-import Logo from '../elements/Logo';
-import Buttons from '../elements/Buttons';
-import SearchBar from '../elements/SearchBar';
+import Links from '../Elements/Links';
+import Logo from '../Elements/Logo';
+import Buttons from '../Elements/Buttons';
+import SearchBar from '../Elements/SearchBar';
 import { useLocation } from 'react-router-dom';
 
 interface HeaderProps {

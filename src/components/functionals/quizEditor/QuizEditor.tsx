@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import Inputs from "../../elements/Inputs";
+import Inputs from "../../Elements/Inputs";
 
 interface QuizEditorProps {
 
