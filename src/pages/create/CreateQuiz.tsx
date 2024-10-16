@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../../components/layouts/Layout';
-import Header from '../../components/layouts/Header';
-import Footer from '../../components/layouts/Footer';
+import Layout from '../../components/Layouts/Layout';
+import Header from '../../components/Layouts/Header';
+import Footer from '../../components/Layouts/Footer';
 import QuizEditor from '../../components/functionals/quizEditor/QuizEditor';
 import styled from 'styled-components';
 
