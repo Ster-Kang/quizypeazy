@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
 import Inputs from "../../Elements/Inputs";
+import Modals from "../../Elements/Modals";
 
 interface QuizEditorProps {
-
 }
 
 const Layout = styled.form`
@@ -67,6 +67,16 @@ const SubjectInput = styled(Inputs)`
     }
 `
 
+const CategoryInputContainer = styled.div`
+    width: auto;
+    position:relative;
+`
+
+const ExtendedModals = styled(Modals)<{isFocused:boolean, isFilled:boolean}>`
+        top: 10rem;
+        right: 10rem;
+`
+
 const QuizMetaDataInputs = styled.section`
 
 `
@@ -77,12 +87,25 @@ const QuizMainData = styled.div`
 
 const QuizEditor = ({}:QuizEditorProps):JSX.Element => {
 
+    const [isFocused, setIsFocused] = useState(false);
+    const [isFilled, setIsFilled] = useState(false);
+    const inputChecks = (e:React.FormEvent<HTMLInputElement>) => {
+        setIsFilled(e.currentTarget.value != "");
+    }
+
     return(
         <Layout>
             <QuizMetaDataInputs>
-                <CategoryInput
-                    placeholder="문제 카테고리 입력"
-                ></CategoryInput>          
+                <CategoryInputContainer>
+                    <CategoryInput
+                        onFocus={()=>setIsFocused(true)}
+                        onBlur={()=>setIsFilled(true)}
+                        onInput={inputChecks}
+                        placeholder="문제 카테고리 입력"
+                    ></CategoryInput>
+                    <ExtendedModals isFocused={isFocused} isFilled={isFilled}
+                    ></ExtendedModals>
+                </CategoryInputContainer>
                 <SubjectInput
                     placeholder="문제 제목 입력"
                 ></SubjectInput>

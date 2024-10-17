@@ -2,6 +2,7 @@ import styled from "styled-components";
 import React, {useState}  from 'react';
 import SearchIcon from '../../img/search-icon.svg'
 import Inputs from "./Inputs";
+import Modals from "../Elements/Modals"
 
 interface SearchBarProps {
     style?: React.CSSProperties;
@@ -63,32 +64,6 @@ const StyledDiv = styled.form<{isFocused:boolean}>`
     }
 `;
 
-const Modals = styled.div<{isFilled:boolean, isFocused:boolean}>`
-    width: 20rem; 
-    height: ${({isFilled, isFocused})=>(isFilled && isFocused?'20rem;':'10rem')};
-    border: 0.15rem solid rgba(0,0,0,0.6);
-    border-radius: 1.5rem;
-    position: absolute;
-    z-index:2;
-    top: 3rem;
-    right: 0rem;
-    box-shadow: 0.2rem 0.4rem 0.5rem rgba(0,0,0,0.1);
-    opacity: ${({isFilled, isFocused})=>(isFilled && isFocused?'1':'0')};
-    transition: opacity 0.2s ease, height 0.5s ease;
-    pointer-events: ${({isFilled, isFocused}) => (isFilled && isFocused? 'auto' : 'none')};
-    display:flex;
-    flex-direction: column;
-    justify-contents: center;
-    padding: 0.66rem 1.44rem;
-`
-
-const Results = styled.div`
-    width: 100%;
-    height: 3rem;
-    display:flex;
-    align-items: center;
-`
-
 const SearchBar = ({style}:SearchBarProps):JSX.Element => {
 
     const [isFocused, setIsFocused] = useState(false);
@@ -108,19 +83,7 @@ const SearchBar = ({style}:SearchBarProps):JSX.Element => {
                     setIsFocused(false)}
                 onInput={inputChecks}
                 ></StyledInput>
-            <Modals isFilled={isFilled} isFocused={isFocused}>
-                <Results>
-                <StyledImg isFocused={isFocused} src={SearchIcon} alt="검색아이콘" ></StyledImg>
-                     게시글 결과 1번</Results>
-                <Results>
-                <StyledImg isFocused={isFocused} src={SearchIcon} alt="검색아이콘" ></StyledImg>
-                    게시글 결과 2번 게시글 결과</Results>
-                <Results>
-                <StyledImg isFocused={isFocused} src={SearchIcon} alt="검색아이콘" ></StyledImg>
-                    게시글 결과 3번 게시글</Results>
-                <Results>
-                <StyledImg isFocused={isFocused} src={SearchIcon} alt="검색아이콘" ></StyledImg>
-                    게시글 결과 4번</Results>
+            <Modals isFilled={isFilled} isFocused={isFocused} >
             </Modals>
         </StyledDiv>
     )
